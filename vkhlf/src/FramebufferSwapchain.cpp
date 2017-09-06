@@ -42,6 +42,7 @@ namespace vkhlf {
         vk::Format depthFormat,
         std::shared_ptr<RenderPass> const& renderPass,
         vk::ImageUsageFlags usageFlags,
+        const std::vector<vk::PresentModeKHR>& presentModeOrder,
         std::shared_ptr<DeviceMemoryAllocator> const& deviceMemoryAllocator,
         std::shared_ptr<Allocator> const& swapchainAllocator,
         std::shared_ptr<Allocator> const& imageAllocator,
@@ -54,7 +55,6 @@ namespace vkhlf {
 
         std::vector<vk::PresentModeKHR> presentModes = device->get<PhysicalDevice>()->getSurfacePresentModes(surface);
 
-        static std::initializer_list<vk::PresentModeKHR> const presentModeOrder{ vk::PresentModeKHR::eFifo, vk::PresentModeKHR::eImmediate };
         auto itPresentModeOrder = std::find_first_of(presentModeOrder.begin(), presentModeOrder.end(), presentModes.begin(), presentModes.end());
         if (itPresentModeOrder == presentModeOrder.end())
         {

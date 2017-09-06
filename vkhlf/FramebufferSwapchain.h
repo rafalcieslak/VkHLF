@@ -41,6 +41,7 @@ namespace vkhlf {
             vk::Format depthFormat,
             std::shared_ptr<RenderPass> const& renderPass,
             vk::ImageUsageFlags usageFlags = vk::ImageUsageFlagBits::eColorAttachment | vk::ImageUsageFlagBits::eTransferSrc,
+            const std::vector<vk::PresentModeKHR>& presentModeOrder = {vk::PresentModeKHR::eFifo, vk::PresentModeKHR::eImmediate},
             std::shared_ptr<DeviceMemoryAllocator> const& deviceMemoryAllocator = nullptr,
             std::shared_ptr<Allocator> const& swapchainAllocator = nullptr,
             std::shared_ptr<Allocator> const& imageAllocator = nullptr,
